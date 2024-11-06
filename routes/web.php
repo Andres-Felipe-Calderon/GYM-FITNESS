@@ -18,14 +18,13 @@ use App\Http\Middleware\CheckUserStatus;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Controllers\SuggestedRoutineController;
 
-
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-
-Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::post('/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
-
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggleStatus');
+});
 Route::get('/admin', function (Request $request) {
     $adminMiddleware = new AdminMiddleware();
     return $adminMiddleware->handle($request, function ($request) {

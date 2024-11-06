@@ -1,5 +1,5 @@
 
-
+@vite(['resources/css/app.css'])
 <x-admin-layout>
 <div class="p-6 bg-gray-50 min-h-screen flex flex-col items-center ">
     <!-- Encabezado y filtro de búsqueda -->
@@ -184,6 +184,6 @@
     </script>
     <script src="https://unpkg.com/feather-icons"></script>
 
-      @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/routines.js'])
+      @vite([ 'resources/js/app.js','resources/js/routines.js'])
 
 </x-admin-layout>

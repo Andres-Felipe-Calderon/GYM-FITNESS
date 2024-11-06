@@ -455,16 +455,23 @@ function confirmarEliminacion(rutinaId) {
             .then(ejerciciosData => {
                 // Aquí reemplaza el contenido del modal con los datos cargados
                 modalContent.innerHTML = `
-                    <h4>Ejercicios:</h4>
-                    <ul id="lista-ejercicios">
-                        ${ejerciciosData.map(data => `
-                            <li>
-                                <strong>${data.name}</strong> 
-                                <img src="/gifs/${data.exercise_id}.gif" alt="${data.name}" style="width: 100px; height: auto;">
-                            </li>
-                        `).join('')}
-                    </ul>
-                `;
+                <h4 class="text-lg font-semibold mb-4">Ejercicios:</h4>
+                <div class="space-y-4" id="lista-ejercicios">
+                    ${ejerciciosData.map(data => `
+                        <div class="bg-white rounded-lg shadow-lg p-3 w-full mx-auto">
+                            <div class="text-center mb-2">
+                                <img src="/gifs/${data.exercise_id}.gif" alt="${data.name}" class="w-24 mx-auto rounded-lg mb-2" style="height: auto;">
+                            </div>
+                            <div class="text-center">
+                                <strong class="text-base font-semibold">${data.name}</strong>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            
+            
     
                 // Elimina el skeleton loader
                 skeletonLoader.remove(); // Elimina el skeleton loader
