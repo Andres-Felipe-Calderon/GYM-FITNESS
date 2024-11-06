@@ -14,10 +14,16 @@ class EjercicioSeeder extends Seeder
      */
     public function run()
     {
-        // Obtén los registros de la base de datos local
-        $ejercicios = \DB::connection('mysql')->table('ejercicios')->get();  // Asegúrate de que 'mysql' sea tu conexión local
+        // Verifica si estás en un entorno local o de producción
+        if (app()->environment('production')) {
+            // Si estamos en producción, conecta a MySQL
+            $ejercicios = \DB::connection('mysql')->table('ejercicios')->get();
+        } else {
+            // Si estamos en local (SQLite), usa la conexión local
+            $ejercicios = \DB::connection('sqlite')->table('ejercicios')->get();
+        }
 
-        // Inserta los registros en la base de datos de producción
+        // Inserta los registros en la base de datos de producción (MySQL)
         foreach ($ejercicios as $ejercicio) {
             Ejercicio::create([
                 'body_part' => $ejercicio->body_part,
@@ -32,4 +38,3 @@ class EjercicioSeeder extends Seeder
         }
     }
 }
-
