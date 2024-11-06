@@ -11,4 +11,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        outDir: 'public/build', // Asegúrate de que los archivos se generen en esta ruta
+    },
 });
