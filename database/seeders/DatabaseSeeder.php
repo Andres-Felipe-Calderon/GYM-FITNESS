@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Ejecuta el seeder de Ejercicios
-        $this->call(EjercicioSeeder::class);
+        $this->call(EjerciciosSeeder::class);
     }
 }
