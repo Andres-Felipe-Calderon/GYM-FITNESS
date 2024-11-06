@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loader {
+    border: 8px solid #f3f3f3; /* Color de fondo */
+    border-top: 8px solid #3498db; /* Color de la parte superior */
+    border-radius: 50%;
+    width: 150px; /* Tamaño */
+    height: 150px; /* Tamaño */
+    animation: spin 1s linear infinite; /* Animación */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.exercise-animation {
+    width: 100%; /* Ajusta según sea necesario */
+    max-width: 100px; /* Limita el tamaño máximo */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-top: 8px; /* Espaciado entre el texto y la imagen */
+    transition: transform 0.3s; /* Transición para efectos */
+}
+
+.exercise-animation:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+.bg-white.shadow-md.rounded-lg.overflow-x-auto {
+    position: relative; /* Esto puede ser necesario para el contexto de z-index */
+    z-index: 10; /* Establece un z-index para el contenedor */
+}
+
+.menu {
+    position: absolute; /* Mantén la posición absoluta */
+    z-index: 50; /* Un z-index más alto que el contenedor */
+}
+/* .muscle:hover {
+    background-color: red;
+}
+*/
+.flex i {
+    transition: transform 0.3s ease;
+}
+
+.flex:hover i {
+    transform: scale(1.1);
+}
+/* Estilos de skeleton loader */
+.skeleton-card {
+    background-color: #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skeleton-title, .skeleton-image, .skeleton-line {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-title {
+    width: 80%;
+    height: 20px;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.skeleton-line {
+    width: 60%;
+    height: 15px;
+}
+
+/* Animación de brillo */
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: 200px 0;
+    }
+}
+/* Estilos para el skeleton loader */
+#skeletonLoader .bg-gray-200 {
+    background-color: #e0e0e0;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Animación para simular carga */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px; /* Tamaño ajustado */
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    position: absolute; /* Ocultar el input fuera del flujo */
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: transform 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px); /* Ajuste preciso para evitar saltos */
+}
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #4caf50; /* Cambia el color del checkbox */
+}
+.shine {
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+.shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Comienza fuera de la vista a la izquierda */
+    width: 200%; /* Doble del ancho del botón para permitir el deslizamiento */
+    height: 100%;
+    background: linear-gradient(60deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); /* Comienzo más desvanecido */
+    animation: shine 4s infinite; /* Aumenta la duración a 4 segundos para un movimiento más lento */
+}
+
+@keyframes shine {
+    0% {
+        left: -100%; /* Comienza fuera de la vista a la izquierda */
+    }
+    50% {
+        left: 100%; /* Desplazamiento completo a la derecha */
+    }
+    100% {
+        left: -100%; /* Regresa fuera de la vista a la izquierda */
+    }
+}
+.svg-separator {
+    position: relative;
+    overflow: hidden;
+    height: 120px; /* Ajusta la altura según sea necesario */
+}
+
+.svg-separator svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    fill: currentColor; /* Cambia el color según la clase o contexto */
+}
+.mobile-zoom {
+    /* Aplica el zoom solo en vista móvil */
+    transform: scale(1.5); /* Ajusta el factor de escala según tus necesidades */
+    transform-origin: center; /* Asegúrate de que el zoom sea centrado */
+}
+
+@media (min-width: 640px) {
+    .mobile-zoom {
+        transform: scale(1); /* Vuelve al tamaño original en pantallas más grandes */
+    }
+}
